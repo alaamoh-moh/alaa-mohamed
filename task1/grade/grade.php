@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-12 text-center text-primary mt-5">
                 <h4>
-                   MY GRADE
+                    MY GRADE
                 </h4>
             </div>
             <div class="col-4 offset-4  mt-5">
@@ -54,33 +54,37 @@
 
                 </form>
                 <?php
-                
-                 define('grade',500);
-                 
-                if (isset($_POST)) {
+
+                define('grade', 500);
+
+                if ($_POST) {
                     $num1 = $_POST['num1'];
                     $num2 = $_POST['num2'];
                     $num3 = $_POST['num3'];
                     $num4 = $_POST['num4'];
                     $num5 = $_POST['num5'];
-                    echo $sum ?? '';
-                    echo $op1 ?? '';
-                    echo $op ?? '';
-                    $sum = $num1+ $num2 +$num3 +$num4 +$num5 ;
-                    echo $sum ."<br>";
-                     echo $op1 = $sum/grade ."<br>";
-                     echo $op=  $op1 *100 ."<br>";
-                    
-
+                    $sum = $num1 + $num2 + $num3 + $num4 + $num5; // 490
+                    $totalGrade = $sum / grade ;
+                    $totalGradePercentage =  $totalGrade * 100 ;
+                    if ($totalGradePercentage < 40) {
+                        echo "f";
+                    } elseif ($totalGradePercentage >= 40 && $totalGradePercentage < 60) {
+                        echo "e";
+                    } elseif ($totalGradePercentage >= 60 && $totalGradePercentage < 70) {
+                        echo "d";
+                    } elseif ($totalGradePercentage >= 70 && $totalGradePercentage < 80) {
+                        echo "c";
+                    } elseif ($totalGradePercentage >= 80 && $totalGradePercentage < 90) {
+                        echo "b";
+                    } else {
+                        echo "a";
+                    }
+                   
                 }
-                  if($op<40){echo "f";}
-                  elseif ($op >=40 && $op <60) { echo "e";}
-                  elseif ($op >=60 && $op <70) { echo "d";}
-                  elseif ($op >=70 && $op <80) { echo "c";}
-                  elseif ($op >=80 && $op <90) { echo "b";}
-                  else {echo "a";}
-                  
-                  
+                
+                
+
+
 
 
                 ?>
