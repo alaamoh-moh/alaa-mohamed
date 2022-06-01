@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +31,10 @@ session_start();
                 </h4>
             </div>
             <div class="col-4 offset-4  mt-5">
-                <form action="review.php" method="POST">
+                <form  action="review.php" method="POST">
                     <div class="form-group">
-                        <label for="num">PHONE Number</label>
-                        <input type="number" name="num" id="number1" class="form-control" placeholder="" aria-describedby="helpId">
+                        <label for="phone">PHONE Number</label>
+                        <input type="number" name="phone" value="" id="number1" class="form-control" placeholder="" aria-describedby="helpId">
                     </div>
 
                    
@@ -44,13 +46,7 @@ session_start();
             </div>
         </div>
     </div>
-<?php 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-$num="";
 
-$_SESSION['num']==$_POST['num'];
-};
-?>
     
 
 </body>

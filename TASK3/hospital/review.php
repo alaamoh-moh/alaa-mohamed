@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+
+
+if ($_POST) {
+    $_SESSION['number'] = $_POST['phone'] ;
+};
+   
+
+?>
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +33,7 @@ session_start();
 
 
 
-    <form class="col-12 text-center text-primary mt-5" method="post" action="review.php">
+    <form class="col-12 text-center text-primary mt-5" method="post" action="result.php">
         <table class="col-12 text-center text-primary mt-5">
             <tr>
                 <td>question</td>
@@ -36,10 +46,10 @@ session_start();
 
             <tr>
                 <td>Are you satified with level of cleanliness?</td>
-                <td> <input class="form-check-input" type="radio" name="n1" id="exampleRadios1" value=0><?= $bad ?? ""; ?> </td>
-                <td> <input class="form-check-input" type="radio" name="n1" id="exampleRadios1" value=3><?= $good ?? ""; ?> </td>
-                <td> <input class="form-check-input" type="radio" name="n1" id="exampleRadios1" value=5><?= $verygood ?? ""; ?> </td>
-                <td> <input class="form-check-input" type="radio" name="n1" id="exampleRadios1" value=10> <?= $excellent ?? ""; ?></td>
+                <td> <input class="form-check-input" type="radio" name="n1" id="exampleRadios1" value=0> </td>
+                <td> <input class="form-check-input" type="radio" name="n1" id="exampleRadios1" value=3> </td>
+                <td> <input class="form-check-input" type="radio" name="n1" id="exampleRadios1" value=5> </td>
+                <td> <input class="form-check-input" type="radio" name="n1" id="exampleRadios1" value=10> </td>
             </tr>
             <tr>
                 <td>Are you satified with level of cleanliness?</td>
@@ -75,34 +85,7 @@ session_start();
 
 
     </form>
-    <?php
-    $n1 = "";
-    $n2 = "";
-    $n3 = "";
-    $n4 = "";
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
-        $n1 = $_POST['n1'];
-        $n2 = $_POST['n2'];
-        $n3 = $_POST['n3'];
-        $n4 = $_POST['n4'];
-        $i = $n1 + $n2 + $n3 + $n4;
-        
-            if ($i <= 25) {
-                echo " We will call you later on this phone " . $_SESSION['num'];
-            } elseif ($i > 25) {
-                echo "thanks";
-            
-        };
-    };
-
-
-    ?>
-
-
-
-
+    
 
 
 

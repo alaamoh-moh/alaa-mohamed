@@ -46,13 +46,13 @@ session_start();
 
 
                     LOAN YEARS
-                    <select class="form-select" aria-label="Default select example">>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">four</option>
-                        <option value="5">five</option>
-                        <option value="6">six</option>
+                    <select class="form-select" name="numberofyears"  aria-label="Default select example">>
+                        <option  value="1">One</option>
+                        <option  value="2">Two</option>
+                        <option  value="3">Three</option>
+                        <option  value="4">four</option>
+                        <option  value="5">five</option>
+                        <option  value="6">six</option>
 
                     </select>
                     <button class=" btn btn-outline-primary form-control my-4 "> GET </button>
@@ -63,25 +63,27 @@ session_start();
 
                 $username = 'username';
 
-                $i = "";
+                //$i = "";
                 $interestrate = '';
                 $loanafterinterest = '';
+                
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
                     $username = $_POST['username'];
-                    $loan = $_POST['loan'];
-                    $user = [
-                        $username => 'username', $interestrate => "interest rate",
-                        $loanafterinterest => 'loan after interest'
-                    ];
+                    $loan = $_POST['loan']; 
+                    $numberofyears=$_POST['numberofyears'];
+                    
+                  
 
-                    if ($i = "1" && $i <= "3") {
+                    if ($numberofyears  <= 3) {
                         $interestrate = ($loan * .1) * 2;
                         $loanafterinterest = $loan + $interestrate;
-                    } elseif ($i > "3") {
+                        $monthly= $loanafterinterest / ($numberofyears * 12) ;
+                    } elseif ($numberofyears > 3) {
                         $interestrate = ($loan * .15) * 2;
                         $loanafterinterest = $loan + $interestrate;
+                        $monthly = $loanafterinterest / ($numberofyears * 12) ;
                     };
 
                     $table = "
@@ -91,7 +93,7 @@ session_start();
                         <th> username </th>
                         <th>interest rate</th>
                         <th >loanafterinterest</th>
-                       
+                        <th >monthly</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -99,6 +101,7 @@ session_start();
                         <td scope='row'>{$username}</td>
                         <td scope='row'>{$interestrate}</td>
                         <td scope='row'>{$loanafterinterest}</td>
+                        <td scope='row'>{$monthly }</td>
                     </tbody>
                   </table>";
                     echo $table;
